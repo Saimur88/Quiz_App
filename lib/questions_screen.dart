@@ -20,20 +20,25 @@ class _QuestionsScreenState extends State<QuestionsScreen> {
 
     return SizedBox(
       width: double.infinity,
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Text(currentQuestion.text,style:const TextStyle(
-            color: Colors.white,
-            fontWeight: FontWeight.bold,
-          ),),
-          SizedBox(height: 30,),
-          AnswerButton(answerText: currentQuestion.answers[0],onTap: (){}),
-          AnswerButton(answerText: currentQuestion.answers[1],onTap:  (){}),
-          AnswerButton(answerText: currentQuestion.answers[2],onTap: (){}),
-          AnswerButton(answerText: currentQuestion.answers[3],onTap:  (){}),
-
-        ],
+      child: Container(
+        margin: EdgeInsets.all(40),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              textAlign: TextAlign.center,
+              currentQuestion.text,style:const TextStyle(
+              color: Colors.white,
+              fontWeight: FontWeight.bold,
+            ),),
+            SizedBox(height: 30,),
+            ...currentQuestion.answers.map((answer){
+              return AnswerButton(answerText: answer, onTap:(){} );
+            }),
+        
+          ],
+        ),
       ),
     );
 
