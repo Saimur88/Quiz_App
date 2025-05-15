@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:quiz_app/quiz.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class StartScreen extends StatelessWidget {
   const StartScreen(this.startQuiz,{super.key});
@@ -31,7 +31,7 @@ class StartScreen extends StatelessWidget {
               ),
                 icon: Icon(Icons.arrow_back),
                 onPressed: startQuiz,
-                label: const Text("Start Quiz")),
+                label: const Text("Start Quiz",)),
           ],
         ));
   }

@@ -20,6 +20,7 @@ class AnswerButton extends StatelessWidget {
           padding: EdgeInsets.symmetric(vertical: 10, horizontal: 40)
         ),
         onPressed: onTap,
-        child: Text(answerText));
+        child: Text(answerText,
+        textAlign: TextAlign.center,));
   }
 }
