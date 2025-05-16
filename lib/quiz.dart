@@ -23,6 +23,7 @@ class _QuizState extends State<Quiz> {
   }
 
  void restartQuiz (){
+   selectedAnswers = [];
    setState(() {
      activeScreen = 'Start-Screen';
    });
@@ -33,7 +34,7 @@ class _QuizState extends State<Quiz> {
     selectedAnswers.add(answer);
 
     if (selectedAnswers.length == questions.length){
-      selectedAnswers = [];
+      //selectedAnswers = [];
       setState(() {
         activeScreen = 'Result-Screen';
       });
@@ -50,7 +51,7 @@ class _QuizState extends State<Quiz> {
     }
 
     if (activeScreen == 'Result-Screen'){
-      screenWidget = ResultScreen(onPressed: restartQuiz);
+      screenWidget = ResultScreen(selectedAnswers: selectedAnswers,resetScreen: restartQuiz,);
     }
 
 
