@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:quiz_app/data/questions.dart';
-import 'answer_button.dart';
+import '../widgets/answer_button.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class QuestionsScreen extends StatefulWidget {
@@ -29,7 +29,8 @@ class _QuestionsScreenState extends State<QuestionsScreen> {
   @override
   Widget build(BuildContext context) {
 
-    final currentQuestion = questions[currentQuesIndex];
+    final currentQuestion = questions[currentQuesIndex]; //Access the questions.dart file
+    // and get the current question
 
     return SizedBox(
       width: double.infinity,
@@ -49,10 +50,11 @@ class _QuestionsScreenState extends State<QuestionsScreen> {
               ),
             ),
             SizedBox(height: 30,),
-            ...currentQuestion.getShuffledAnswers().map((answer){
+            ...currentQuestion.getShuffledAnswers().map((answer){ //... is used to spread the list/
+              // broke the items in the list
               return AnswerButton(answerText: answer,
                 onTap:(){
-                answerQuestion(answer);
+                answerQuestion(answer); //after clicking on any answer the answerQuestion function is called
                 },
               );
             }),

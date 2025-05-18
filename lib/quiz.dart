@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:quiz_app/questions_screen.dart';
-import 'start_screen.dart';
+import 'package:quiz_app/screens/questions_screen.dart';
+import 'screens/start_screen.dart';
 import 'data/questions.dart';
-import 'result_screen.dart';
+import 'screens/result_screen.dart';
 
 
 class Quiz extends StatefulWidget {
@@ -13,25 +13,19 @@ class Quiz extends StatefulWidget {
 }
 
 class _QuizState extends State<Quiz> {
- List<String> selectedAnswers = [];
+ List<String> selectedAnswers = []; //stores the selected answers
   var activeScreen = 'Start-Screen';
 
-  void switchScreen(){
+  void switchScreen(){              //Made to execute when start button is pressed
     setState(() {
       activeScreen = 'Questions-Screen';
     });
   }
 
- void restartQuiz (){
-   selectedAnswers = [];
-   setState(() {
-     activeScreen = 'Start-Screen';
-   });
- }
 
-  void chooseAnswer(String answer){
+  void chooseAnswer(String answer){ //calling this function from questions_screen.dart from onSelectAnswer
 
-    selectedAnswers.add(answer);
+    selectedAnswers.add(answer); //stores answers provided by onSelectAnswer into selectedAnswers
 
     if (selectedAnswers.length == questions.length){
       //selectedAnswers = [];
@@ -40,6 +34,13 @@ class _QuizState extends State<Quiz> {
       });
     }
   }
+
+ void restartQuiz (){
+   selectedAnswers = [];
+   setState(() {
+     activeScreen = 'Start-Screen';  //Made The current screen to start screen
+   });
+ }
 
   @override
   Widget build(BuildContext context) {

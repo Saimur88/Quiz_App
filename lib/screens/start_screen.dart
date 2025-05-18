@@ -4,7 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 class StartScreen extends StatelessWidget {
   const StartScreen(this.startQuiz,{super.key});
 
-  final void Function() startQuiz;
+  final void Function() startQuiz; //Receives switchscreen() function from quiz.dart and executes it
 
   @override
   Widget build(BuildContext context) {
