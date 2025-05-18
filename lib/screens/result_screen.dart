@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:quiz_app/widgets/questions_summary.dart';
 import '../data/questions.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class ResultScreen extends StatelessWidget {
 
@@ -22,6 +23,8 @@ class ResultScreen extends StatelessWidget {
         'question': questions[i].text,
         'correct_answer': questions[i].answers[0],
         'user_answer': selectedAnswers[i],
+        'is_correct_answer': questions[i].answers[0] == selectedAnswers[i],
+
       });
     }
     return summary;
@@ -43,15 +46,25 @@ class ResultScreen extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-               Text("You Answered $numCorrectQuestions out of $numTotalQuestions Questions Correctly"),
+               Text("You Answered $numCorrectQuestions out of $numTotalQuestions Questions Correctly!",
+               textAlign: TextAlign.center,
+               style: GoogleFonts.lato(
+                 color: Colors.white,
+                 fontSize: 17,
+                 fontWeight: FontWeight.bold,
+               ) ,),
             const SizedBox(height: 30,),
             QuestionsSummary(summaryData: summaryData),
             const SizedBox(height: 30,),
-            TextButton(
-                onPressed: (){
-                  resetScreen();
-                },
-                child: const Text("Restart Quiz"))
+            OutlinedButton.icon(
+                onPressed: resetScreen,
+                icon: Icon(Icons.refresh_outlined,color: Colors.white,),
+                label: Text('Restart Quiz',
+                style: GoogleFonts.lato(
+                  color: Colors.white,
+                  fontSize: 15,
+                  fontWeight: FontWeight.bold,
+                ),))
           ],
         ),
       ),
